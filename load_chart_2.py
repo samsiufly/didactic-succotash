@@ -19,7 +19,7 @@ def selenium_spotify(url, date):
     driver.implicitly_wait(10)
     driver.get(url)
     print("Retrieving: ", driver.title)
-    print("========================================")
+    print("================================================")
 
     ls_position = list()
     ls_title = list()
