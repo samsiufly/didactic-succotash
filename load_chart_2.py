@@ -12,7 +12,7 @@ if len(fname) < 1:
     fname = "url_set.txt"
 fhand = open(fname)
 
-n = 0   # no of link counter
+n = 0   # no of link counters
 
 def selenium_spotify(url, date):
     driver = webdriver.Chrome()
