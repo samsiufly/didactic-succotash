@@ -1,12 +1,8 @@
-import csv
-
 # open a file
 fname = input("Enter file:")
 if len(fname) < 1:
     fname = "weekday.txt"
 fhand = open(fname)
-
-#n = 10   #initialize the counter
 
 week_lst = list()
 
