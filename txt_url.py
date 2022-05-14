@@ -27,12 +27,6 @@ else:
 
 print ('Your country:', country)
 
-#Recurrence
-#recurrence = input ("Which data do you need? daily or weekly? ")
-#recurrence = 'weekly'
-#print (country, recurrence)
-#print ("Done")
-
 n = 10
 #n = input("How many weeks do you want to retrieve? (max 246): ")
 n = int(n)
