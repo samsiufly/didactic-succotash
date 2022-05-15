@@ -1,8 +1,6 @@
 # -*- coding: UTF-8 -*-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 import time
 import csv
 import itertools
@@ -22,6 +20,7 @@ def selenium_spotify(url, date):
     options.add_argument('headless')
     #option"S".XXXXXXXXX not option
     driver = webdriver.Chrome(options=options)
+
     driver.implicitly_wait(10)
     driver.get(url)
     print("Retrieving data: ", driver.title)
