@@ -15,10 +15,16 @@ fhand = open(fname)
 n = 0   # no of link counters
 
 def selenium_spotify(url, date):
-    driver = webdriver.Chrome()
+    options = webdriver.ChromeOptions()
+    #Ignore all Chrome messages except fatal errors #default --long-level=0
+    options.add_argument('--log-level=3')
+    #launch Chrome without gui browser window 800x600 in default size
+    options.add_argument('headless')
+    #option"S".XXXXXXXXX not option
+    driver = webdriver.Chrome(options=options)
     driver.implicitly_wait(10)
     driver.get(url)
-    print("Retrieving: ", driver.title)
+    print("Retrieving data: ", driver.title)
     print("================================================")
 
     ls_position = list()
@@ -50,6 +56,8 @@ def selenium_spotify(url, date):
     dataset = list (group)
 
     print ("=====Writing to CSV=====")
+    #driver.close() #close the tab only .quit = quit browser
+    driver.close() #close the browser
 
     # Use file to refer to the file object
     with open('%s.csv' % date,'w', encoding='utf-8') as f:
@@ -57,15 +65,11 @@ def selenium_spotify(url, date):
         writer.writerow(['Position', 'Track Name', 'Artist', 'Streams'])
         writer.writerows(dataset)
 
-    time.sleep(5)
-
-    #driver.close() #close the tab only .quit = quit browser
-    driver.close() #close the browser
-
 for line in fhand:
     stripped_line = line.strip() #links
     url = str(stripped_line)
     date = url.split("/")[6]
     selenium_spotify(url, date)
     n = n + 1
+    print ("Finished", n)
 print (n, "of dataset done.")
