@@ -50,7 +50,6 @@ def selenium_spotify(url, date):
     dataset = list (group)
 
     print ("=====Writing to CSV=====")
-    # print (dataset)
 
     # Use file to refer to the file object
     with open('%s.csv' % date,'w', encoding='utf-8') as f:
