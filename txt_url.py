@@ -1,9 +1,12 @@
+import time
+
 # open a file
 fname = input("Enter file:")
 if len(fname) < 1:
     fname = "weeks.txt"
 fhand = open(fname)
 
+# list for temp urls
 web_url = list()
 
 # countries dictionary
@@ -15,22 +18,22 @@ countries = ['global','se','us','gb','ae','ar','at','au','be','bg','bo',\
              'sg','sk','sv','th','tr','tw','ua','uy','un','za']
 
 #Select the country
-#country = input ("Enter the country: ")
-country = "jp"
+country = input ("Enter the country: ")
 x  = countries.__contains__(country)
 if x == True:
     print ("Proceeding......")
+    time.sleep(3)
 else:
     country = 'global'
     print ("Invalid. Default country: global")
     print ("Proceeding......")
+    time.sleep(3)
 
-print ('Your country:', country)
+print ('Your selected country:', country)
 
-n = 10
 #n = input("How many weeks do you want to retrieve? (max 246): ")
+n = input ("No. of weeks: (246max) ")
 n = int(n)
-list_of_lists = [] #max 246 weeks
 
 for line in fhand:
     if n > 0:
@@ -43,11 +46,12 @@ for line in fhand:
         n = n - 1
 
 print ("=====Writing to TXT=====")
+time.sleep(3)
 
-textfile = open("url_set.txt", "w")
+filename = input ("Export Url Filename: ")
+textfile = open('%s.txt' % filename,'w')
 for url in web_url:
     textfile.write(url + "\n")
 textfile.close()
 
-print ("Done")
-print ("Please check the exported link in url_set.txt")
+print ("Done.")
