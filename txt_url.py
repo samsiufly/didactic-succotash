@@ -32,7 +32,7 @@ else:
 print ('Your selected country:', country)
 
 #n = input("How many weeks do you want to retrieve? (max 246): ")
-n = input ("No. of weeks: (246max) ")
+n = input ("No. of weeks: (281max) ")
 n = int(n)
 
 for line in fhand:
