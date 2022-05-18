@@ -9,7 +9,7 @@ import itertools
 
 fname = input("Enter file:")
 if len(fname) < 1:
-    fname = "url_set.txt"
+    fname = "all_url_test.txt"
 fhand = open(fname)
 
 options = webdriver.ChromeOptions()
@@ -43,6 +43,8 @@ for line in fhand:
     stripped_line = line.strip() #links
     url = str(stripped_line)
     date = url.split("/")[6]
+    country = url.split("/")[4]
+    filename = country+'_'+date
 
     driver.get(url)
     # wait for the page to load
@@ -74,7 +76,7 @@ for line in fhand:
     print ("=====Writing to CSV=====")
 
     # Use file to refer to the file object
-    with open('%s.csv' % date,'w', encoding='utf-8') as f:
+    with open('%s.csv' % filename,'w', encoding='utf-8') as f:
         writer = csv.writer(f)
         writer.writerow(['Position', 'Track Name', 'Artist', 'Streams'])
         writer.writerows(dataset)
