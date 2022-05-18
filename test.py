@@ -40,7 +40,7 @@ for line in fhand:
     ls_artist = list()
     ls_stream = list()
 
-    stripped_line = line.strip() #links
+    stripped_line = line.strip() #link
     url = str(stripped_line)
     date = url.split("/")[6]
     country = url.split("/")[4]
