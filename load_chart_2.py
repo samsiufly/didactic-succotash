@@ -52,16 +52,13 @@ for line in fhand:
     country = url.split("/")[4]
     filename = country+'_'+date
 
-    try:
-        driver.get(url)
-        # wait for the page to load
-    except:
-        print('Data Sprawling Error Found. Please initialize the app again.')
 
-    try:
-        wait.until(EC.visibility_of_element_located((By.XPATH, './/*[@id="content"]/div/div/div/span/table/tbody/tr[1]/td[5]/')))
-    except:
-        print('Response expired...')
+    driver.get(url)
+    # wait for the page to load
+
+
+    wait.until(EC.visibility_of_element_located((By.XPATH, './/*[@id="content"]/div/div/div/span/table/tbody/tr[1]/td[5]/')))
+    
 
     #positions in the chart
     positions = driver.find_elements(By.XPATH, './/*[@id="content"]/div/div/div/span/table/tbody/tr/td[2]')
